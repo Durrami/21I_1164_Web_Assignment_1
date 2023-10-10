@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+}
+
+body {
+  background: url(images/bg-header-desktop.svg), linear-gradient(to bottom, hsl(180, 29%, 50%) 0 9.8em, hsl(180, 52%, 96%) 9.8em 100%), hsl(180, 52%, 96%);
+  background-repeat: repeat-x;
+  height: 100dvh;
+}
+
+.not__show {
+  opacity: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.filter__div {
+  border-radius: 0.3rem;
+  background-color: white;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 5px 10px rgba(42, 87, 66, 0.301);
+  display: flex;
+}
+
+.filter__div .filter {
+  font-weight: 700;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  font-size: 1rem;
+  background-color: hsl(180, 52%, 96%);
+  margin-left: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.filter__div .filter::after {
+  transition: 0.2s ease;
+  content: "X";
+  margin-left: 0.5rem;
+  background-color: hsl(180, 29%, 50%);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+.filter__div .filter:hover::after {
+  background-color: hsl(180, 14%, 20%);
+}
+
+.filter__div .clear {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: hsl(180, 29%, 50%);
+  cursor: pointer;
+}
+
+main {
+  padding: 8rem 1.5rem 1.5rem 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 65px 1fr 2fr;
+  gap: 2rem;
+  border-radius: 0.3rem;
+  background-color: white;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 5px 10px rgba(42, 87, 66, 0.301);
+}
+
+
+.logo {
+  width: 70px;
+}
+
+.card__info {
+  align-self: center;
+}
+
+.card__info .card__title {
+  font-size: 1rem;
+  color: hsl(180, 29%, 50%);
+}
+
+.card__info .card__title .new {
+  color: white;
+  background-color: hsl(180, 29%, 50%);
+  padding: 0.3rem 0.5rem;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.card__info .card__title .featured {
+  color: white;
+  background-color: hsl(180, 14%, 20%);
+  padding: 0.3rem 0.5rem;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.card__info .occupation {
+  font-size: 1.2rem;
+  color: hsl(180, 14%, 20%);
+  margin: 0.8rem 0;
+}
+
+.card__info .occupation:hover {
+  color: hsl(180, 29%, 50%);
+  cursor: pointer;
+}
+
+.card__info .info {
+  display: flex;
+  gap: 1.5rem;
+  color: hsl(180, 8%, 52%);
+}
+
+.card__info .info li:nth-child(1) {
+  list-style: none;
+}
+
+.card__tech {
+  align-self: center;
+  justify-self: flex-end;
+  gap: 0.5rem;
+}
+
+.card__tech .tech {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: hsl(180, 29%, 50%);
+  background-color: hsl(180, 52%, 96%);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  margin-right: 0.5rem;
+  transition: 0.2s ease;
+}
+
+.card__tech .tech:hover {
+  background-color: hsl(180, 29%, 50%);
+  color: white;
+}
+
+@media screen and (max-width: 950px) {
+  main {
+    gap: 3rem;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1px auto;
+    gap: 1rem;
+  }
+
+  .logo {
+    width: 55px;
+    transform: translateY(-95%);
+  }
+
+  .card__tech {
+    border-top: 1px solid hsl(180, 8%, 52%);
+    width: 100%;
+    align-self: center;
+    justify-self: flex-start;
+  }
+
+  .card__tech .tech {
+    margin-top: 1rem;
+  }
+}
+
+/* new popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.3rem;
+  text-align: center;
+  position: relative;
+}
+
+.popup .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+  color: hsl(180, 29%, 50%);
+}
+
+/* add job button */
+.add-job-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: hsl(180, 29%, 50%);
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: pointer;
+}
+
+
+.popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.popup-close-btn:hover {
+  color: #ff4f4f;
+}
+
+.delete-button {
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: hsl(180, 29%, 50%);
+  cursor: pointer;
+  margin-top: 1rem; /* Adjust margin as needed */
+}
+
+.delete-button:hover {
+  color: hsl(180, 14%, 20%);
+}
+
+
+/*# sourceMappingURL=style.css.map */
+
+/* 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+  .form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: #fefefe;
+  }
+  
+  .form-container h2 {
+    text-align: center;
+  }
+  
+  .form-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  .btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
+  
+  .cancel {
+    background-color: red;
+  }
+   */
